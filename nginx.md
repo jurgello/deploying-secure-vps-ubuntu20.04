@@ -87,3 +87,24 @@ sudo systemctl stop certbot.timer
 sudo systemctl disable certbot.timer
 
 ```
+
+```
+server {
+    listen [::]:80;
+    listen 80;
+    listen [::]:443 ssl;
+    listen 443 ssl;
+
+    server_name hrothgar.learn-code.ca;
+
+
+    location / {
+        proxy_pass http://localhost:8080;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "upgrade";
+        proxy_set_header Host $host;
+    }
+}
+
+```

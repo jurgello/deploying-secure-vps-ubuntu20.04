@@ -75,12 +75,8 @@ hrothgar.learn-code.ca {
     } 
 }
 
-
 ```
-
-```sh
-sudo cp hrothgar.conf www.conf
-```
+Caddy config file with reverse proxy settings
 
 ```
 # www.conf
@@ -89,9 +85,11 @@ www.learn-code.ca {
     import static
     import security
 
-    root * /var/www/www
+    #root * /var/www/www
 
-    file_server
+    #file_server
+
+   reverse_proxy localhost:8080
 
     log {
        output file /var/log/caddy/hrothgar-access.log
@@ -99,11 +97,5 @@ www.learn-code.ca {
     } 
 }
 
-```sh
-
-cd /var/log
-sudo mkdir caddy
-sudo chown caddy:caddy caddy
-sudo systemctl reload caddy
-sudo systemctl enable caddy
 ```
+
