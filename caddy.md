@@ -69,10 +69,10 @@ hrothgar.learn-code.ca {
 
     file_server
 
-    # log {
-    #   output file /var/logs/...
-    #   format single_field common_log
-    # 
+    log {
+       output file /var/log/caddy/hrothgar-access.log
+       format single_field common_log
+    } 
 }
 
 
@@ -93,9 +93,17 @@ www.learn-code.ca {
 
     file_server
 
-    # log {
-    #   output file /var/logs/...
-    #   format single_field common_log
-    # 
+    log {
+       output file /var/log/caddy/hrothgar-access.log
+       format single_field common_log
+    } 
 }
 
+```sh
+
+cd /var/log
+sudo mkdir caddy
+sudo chown caddy:caddy caddy
+sudo systemctl reload caddy
+sudo systemctl enable caddy
+```
