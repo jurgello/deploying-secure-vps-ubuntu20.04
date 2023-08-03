@@ -35,4 +35,3 @@ sudo systemctl status certbot.timer
 #
 
 ````
-
